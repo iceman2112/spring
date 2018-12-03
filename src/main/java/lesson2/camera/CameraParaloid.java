@@ -1,6 +1,6 @@
 package lesson2.camera;
 
-import lesson2.annotation.UnproductableCamera;
+import com.sun.prism.paint.Color;
 import lesson2.camera.roll.BlackWhiteCameraRoll;
 import lesson2.camera.roll.CameraRoll;
 import lesson2.camera.roll.ColorCameraRoll;
@@ -9,17 +9,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component("cameraImpl")
-@UnproductableCamera(usingCameraClass = CameraParaloid.class)
-public class CameraImpl implements Camera {
+@Component
+public class CameraParaloid implements Camera {
 
     @Autowired
-    @Qualifier(BlackWhiteCameraRoll.NAME)
+    @Qualifier(ColorCameraRoll.NAME)
     private CameraRoll cameraRoll;
 
     @Value("false")
     private boolean isBroken;
-
     public CameraRoll getCameraRoll() {
         return cameraRoll;
     }
@@ -30,9 +28,9 @@ public class CameraImpl implements Camera {
 
     public void doPhotograph() {
         if (isBroken) {
-            System.out.println("Camera is broken.");
+            System.out.println("Camera paraloid is broken.");
         } else {
-            System.out.println("Photo is done.");
+            System.out.println("Photo's paraloid is done.");
             cameraRoll.processing();
         }
     }

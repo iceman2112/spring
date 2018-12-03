@@ -1,14 +1,14 @@
 package lesson2;
 
-import lesson2.annotation.UnproductableCameraRoll;
+import lesson2.annotation.UnproductableCamera;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Component;
 
-//@Component
-public class UnproducableCameraRollBeanFactoryPostProcessor implements BeanFactoryPostProcessor{
+@Component
+public class UnproductableCameraBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
         for (String name : beanDefinitionNames) {
@@ -19,9 +19,9 @@ public class UnproducableCameraRollBeanFactoryPostProcessor implements BeanFacto
             try {
                 Class<?> beanClass = Class.forName(className);
 
-                UnproductableCameraRoll anntotation = beanClass.getAnnotation(UnproductableCameraRoll.class);
+                UnproductableCamera anntotation = beanClass.getAnnotation(UnproductableCamera.class);
                 if (anntotation != null) {
-                    beanDefinition.setBeanClassName(anntotation.usingCameraRollClass().getName());
+                    beanDefinition.setBeanClassName(anntotation.usingCameraClass().getName());
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
