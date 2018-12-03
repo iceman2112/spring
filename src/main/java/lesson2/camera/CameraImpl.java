@@ -1,7 +1,10 @@
-package lesson2;
+package lesson2.camera;
 
-import lesson2.cameraRoll.CameraRoll;
+import lesson2.camera.roll.BlackWhiteCameraRoll;
+import lesson2.camera.roll.CameraRoll;
+import lesson2.camera.roll.ColorCameraRoll;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +12,9 @@ import org.springframework.stereotype.Component;
 public class CameraImpl implements Camera {
 
     @Autowired
+    @Qualifier(BlackWhiteCameraRoll.NAME)
     private CameraRoll cameraRoll;
+
     @Value("false")
     private boolean isBroken;
 

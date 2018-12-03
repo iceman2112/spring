@@ -1,6 +1,6 @@
-package lesson2;
+package lesson2.camera;
 
-import lesson2.cameraRoll.CameraRoll;
+import lesson2.camera.roll.CameraRoll;
 
 public interface Camera {
     CameraRoll getCameraRoll();

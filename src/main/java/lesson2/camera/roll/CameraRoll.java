@@ -1,6 +1,4 @@
-package lesson2.cameraRoll;
-
-import org.springframework.stereotype.Component;
+package lesson2.camera.roll;
 
 public interface CameraRoll {
     void processing();
